@@ -9,6 +9,13 @@
           <option>3</option>
           <option>2</option>
         </select>
+        <input type="checkbox" value="EX" v-model="form.ex" /> EX
+        <select v-model="form.color">
+          <option value="">Selecione a cor</option>
+          <option>Mystic-Azul</option>
+          <option>Valor-Vermelho</option>
+          <option>Instinct-Amarelo</option>
+        </select>
       </li>
       <li>
         <label>🐣 Chefe: </label> <input type="text" v-model="form.chefe" />
@@ -22,16 +29,7 @@
       <li>
         <label>Quant. Lista </label>
         <select v-model="form.qtdLista">
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-          <option>6</option>
-          <option>7</option>
-          <option>8</option>
-          <option>9</option>
-          <option>10</option>
-          <option>11</option>
-          <option>12</option>
+          <option v-for="n in 20" :key="n" v-show="n > 2">{{ n }}</option>
         </select>
       </li>
     </ul>
@@ -47,7 +45,7 @@
 
     <pre ref="result">
       <div class="poke_raid">
-    🔰 *RAID LEVEL {{form.raid}}*
+    🔰 *RAID LEVEL {{form.raid}}{{form.ex ? ' EX': ''}}{{form.color ? ' '+form.color: ''}}*
     🐣 *Chefe: {{form.chefe}}*
     ⏳ *Hora: {{form.time}}*
     🏟 *Gym: {{form.gym}}*
@@ -68,6 +66,8 @@ export default {
   data: () => ({
     form: {
       raid: 5,
+      ex: '',
+      color: '',
       chefe: '',
       time: '',
       gym: '',
@@ -103,7 +103,9 @@ export default {
           return `${k + 1}. ${i.nick} ${i.level ? ` - ${i.level}` : ''}`
         })
         .join('\n')
-      let codigo = `🔰 *RAID LEVEL ${this.form.raid}*
+      let codigo = `🔰 *RAID LEVEL ${this.form.raid}${
+        this.form.ex ? ' EX' : ''
+      }${this.form.color ? ' ' + this.form.color : ''}*
 🐣 *Chefe: ${this.form.chefe}*
 ⏳ *Hora: ${this.form.time}*
 🏟 *Gym: ${this.form.gym}*
