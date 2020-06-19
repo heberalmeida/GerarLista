@@ -23,11 +23,11 @@
       <li><label>⏳ Hora:</label> <input type="text" v-model="form.time" /></li>
       <li><label>🏟 Gym:</label> <input type="text" v-model="form.gym" /></li>
       <li>
-        <label>🌎 Coordenadas:</label>
+        <label>📍 Coordenadas:</label>
         <input type="text" v-model="form.coord" />
       </li>
       <li>
-        <label>Quant. Lista </label>
+        <label>🚶Quant. Lista </label>
         <select v-model="form.qtdLista">
           <option v-for="n in 20" :key="n" v-show="n > 2">{{ n }}</option>
         </select>
@@ -49,7 +49,7 @@
     🐣 *Chefe: {{form.chefe}}*
     ⏳ *Hora: {{form.time}}*
     🏟 *Gym: {{form.gym}}*
-    {{form.coord && `🌎 *Coordenadas: ${this.form.coord}*`}}
+    {{form.coord && `📍 *Coordenadas*${'\n'+this.form.coord}`}}
 
       <span v-for="(u, k) in users" :key="k">{{k + 1}}. {{ u.nick }} {{ u.level ? ' - ' + u.level : '' }}</span>
     </div>
@@ -109,7 +109,7 @@ export default {
 🐣 *Chefe: ${this.form.chefe}*
 ⏳ *Hora: ${this.form.time}*
 🏟 *Gym: ${this.form.gym}*
-  ${this.form.coord && `🌎 *Coordenadas: ${this.form.coord}*`}
+${this.form.coord && `📍 *Coordenadas*${'\n' + this.form.coord}`}
     
 ${users}
       `
