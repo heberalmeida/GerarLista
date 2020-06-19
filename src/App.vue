@@ -132,14 +132,18 @@ ${users}
   font-family Helvetica, Arial, sans-serif
   color #2c3e50
   margin-top 60px
+
 pre
   background #f0f0f0
   white-space pre-line
   padding-left 30px
+
 span
   display block
+
 ul
   list-style none
+
 label
   padding-left 10px
 </style>
