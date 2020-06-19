@@ -20,7 +20,10 @@
       <li>
         <label>🐣 Chefe: </label> <input type="text" v-model="form.chefe" />
       </li>
-      <li><label>⏳ Hora:</label> <input type="text" v-model="form.time" /></li>
+      <li>
+        <label>⏳ Hora:</label>
+        <the-mask mask="##:##" masked="false" v-model="form.time" />
+      </li>
       <li><label>🏟 Gym:</label> <input type="text" v-model="form.gym" /></li>
       <li>
         <label>📍 Coordenadas:</label>
@@ -61,8 +64,11 @@
 </template>
 
 <script>
+import { TheMask } from 'vue-the-mask'
+
 export default {
   name: 'App',
+  components: { TheMask },
   data: () => ({
     form: {
       raid: 5,
