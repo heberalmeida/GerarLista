@@ -39,19 +39,30 @@
 
     <ul>
       <li v-for="(u, k) in users" :key="k">
-        <p>
-          <label>Nick</label> <input type="text" v-model="u.nick" />
-          <label>Level</label> <input type="text" v-model="u.level" />
-        </p>
+        <div class="users">
+          <div class="nick">
+            <label>Nick</label>
+            <input class="nick-name" type="text" v-model="u.nick" />
+          </div>
+          <div class="level">
+            <label>Level</label>
+            <the-mask
+              class="nick-level"
+              mask="##"
+              masked="false"
+              v-model="u.level"
+            />
+          </div>
+        </div>
       </li>
     </ul>
 
     <pre ref="result">
       <div class="poke_raid">
-    🔰 *RAID LEVEL {{form.raid}}{{form.ex ? ' EX': ''}}{{form.color ? ' '+form.color: ''}}*
-    🐣 *Chefe: {{form.chefe}}*
+    🔰 *RAID LEVEL {{form.raid.trim()}}{{form.ex ? ' EX': ''}}{{form.color ? ' '+form.color: ''}}*
+    🐣 *Chefe: {{form.chefe.trim()}}*
     ⏳ *Hora: {{form.time}}*
-    🏟 *Gym: {{form.gym}}*
+    🏟 *Gym: {{form.gym.trim()}}*
     {{form.coord && `📍 *Coordenadas*${'\n'+this.form.coord}`}}
 
       <span v-for="(u, k) in users" :key="k">{{k + 1}}. {{ u.nick }} {{ u.level ? ' - ' + u.level : '' }}</span>
@@ -109,12 +120,12 @@ export default {
           return `${k + 1}. ${i.nick} ${i.level ? ` - ${i.level}` : ''}`
         })
         .join('\n')
-      let codigo = `🔰 *RAID LEVEL ${this.form.raid}${
+      let codigo = `🔰 *RAID LEVEL ${this.form.raid.trim()}${
         this.form.ex ? ' EX' : ''
       }${this.form.color ? ' ' + this.form.color : ''}*
-🐣 *Chefe: ${this.form.chefe}*
+🐣 *Chefe: ${this.form.chefe.trim()}*
 ⏳ *Hora: ${this.form.time}*
-🏟 *Gym: ${this.form.gym}*
+🏟 *Gym: ${this.form.gym.trim()}*
 ${this.form.coord && `📍 *Coordenadas*${'\n' + this.form.coord}`}
     
 ${users}
@@ -152,4 +163,18 @@ ul
 
 label
   padding-left 10px
+
+
+.users
+  display flex
+  .nick
+    display flex
+    justify-content space-between
+    margin-bottom 10px
+  .nick-name
+    margin-left 10px
+    width 120px
+  .nick-level
+    width 50px
+    margin-left 5px
 </style>
