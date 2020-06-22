@@ -55,9 +55,9 @@
     <pre ref="result">
       <div class="poke_raid">
     🔰 *RAID LEVEL {{form.raid}}{{form.ex ? ' EX': ''}}{{form.color ? ' '+form.color: ''}}*
-    🐣 *Chefe: {{form.chefe}}*
+    🐣 *Chefe: {{form.chefe.trim()}}*
     ⏳ *Hora: {{form.time}}*
-    🏟 *Gym: {{form.gym}}*
+    🏟 *Gym: {{form.gym.trim()}}*
     {{form.coord && `📍 *Coordenadas*${'\n'+this.form.coord}`}}
 
       <span v-for="(u, k) in users" :key="k">{{k + 1}}. {{ u.nick }} {{ u.level ? ' - ' + u.level : '' }}</span>
@@ -115,7 +115,7 @@ export default {
           return `${k + 1}. ${i.nick} ${i.level ? ` - ${i.level}` : ''}`
         })
         .join('\n')
-      let codigo = `🔰 *RAID LEVEL ${this.form.raid.trim()}${
+      let codigo = `🔰 *RAID LEVEL ${this.form.raid}${
         this.form.ex ? ' EX' : ''
       }${this.form.color ? ' ' + this.form.color : ''}*
 🐣 *Chefe: ${this.form.chefe.trim()}*
