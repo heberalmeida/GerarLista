@@ -22,7 +22,7 @@
       </li>
       <li>
         <label>⏳ Hora:</label>
-        <the-mask mask="##:##" masked="false" v-model="form.time" />
+        <the-mask mask="##:##" :masked="false" v-model="form.time" />
       </li>
       <li><label>🏟 Gym:</label> <input type="text" v-model="form.gym" /></li>
       <li>
@@ -46,12 +46,7 @@
           </div>
           <div class="level">
             <label>Level</label>
-            <the-mask
-              class="nick-level"
-              mask="##"
-              masked="false"
-              v-model="u.level"
-            />
+            <the-mask class="nick-level" mask="##" v-model="u.level" />
           </div>
         </div>
       </li>
@@ -59,10 +54,10 @@
 
     <pre ref="result">
       <div class="poke_raid">
-    🔰 *RAID LEVEL {{form.raid.trim()}}{{form.ex ? ' EX': ''}}{{form.color ? ' '+form.color: ''}}*
-    🐣 *Chefe: {{form.chefe.trim()}}*
+    🔰 *RAID LEVEL {{form.raid}}{{form.ex ? ' EX': ''}}{{form.color ? ' '+form.color: ''}}*
+    🐣 *Chefe: {{form.chefe}}*
     ⏳ *Hora: {{form.time}}*
-    🏟 *Gym: {{form.gym.trim()}}*
+    🏟 *Gym: {{form.gym}}*
     {{form.coord && `📍 *Coordenadas*${'\n'+this.form.coord}`}}
 
       <span v-for="(u, k) in users" :key="k">{{k + 1}}. {{ u.nick }} {{ u.level ? ' - ' + u.level : '' }}</span>
