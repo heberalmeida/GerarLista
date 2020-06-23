@@ -124,7 +124,7 @@ export default {
         .join('\n')
       let codigo = `🔰 *RAID LEVEL ${this.form.raid}${
         this.form.ex ? ' EX' : ''
-      }${this.form.color ? ' ' + this.form.color : ''}
+      }${this.form.color ? ' ' + this.form.color : ''}*
 🐣 *Chefe: ${this.form.chefe.trim()}*
 ⏳ *Hora: ${this.form.time}*
 🏟 *Gym: ${this.form.gym.trim()}*${this.form.location &&
