@@ -26,8 +26,13 @@
       </li>
       <li><label>🏟 Gym:</label> <input type="text" v-model="form.gym" /></li>
       <li>
+        <label>🏘️ Bairro: </label> <input type="text" v-model="form.location" />
+        *opcional
+      </li>
+      <li>
         <label>📍 Coordenadas:</label>
         <input type="text" v-model="form.coord" />
+        *opcional
       </li>
       <li>
         <label>🚶Quant. Lista </label>
@@ -54,7 +59,7 @@
 
     <pre ref="result">
       <div class="poke_raid">
-    🔰 *RAID LEVEL {{form.raid}}{{form.ex ? ' EX': ''}}{{form.color ? ' '+form.color: ''}}*
+    🔰 *RAID LEVEL {{form.raid}}{{form.ex ? ' EX': ''}}{{form.color ? ' '+form.color: ''}}*{{form.location && `\n🏘️ *Bairro: ${form.location.trim()}*`}}
     🐣 *Chefe: {{form.chefe.trim()}}*
     ⏳ *Hora: {{form.time}}*
     🏟 *Gym: {{form.gym.trim()}}*
@@ -80,6 +85,7 @@ export default {
       raid: 5,
       ex: '',
       color: '',
+      location: '',
       chefe: '',
       time: '',
       gym: '',
@@ -117,7 +123,8 @@ export default {
         .join('\n')
       let codigo = `🔰 *RAID LEVEL ${this.form.raid}${
         this.form.ex ? ' EX' : ''
-      }${this.form.color ? ' ' + this.form.color : ''}*
+      }${this.form.color ? ' ' + this.form.color : ''}*${this.form.location &&
+        `\n🏘️ *Bairro: ${this.form.location.trim()}*`}
 🐣 *Chefe: ${this.form.chefe.trim()}*
 ⏳ *Hora: ${this.form.time}*
 🏟 *Gym: ${this.form.gym.trim()}*
