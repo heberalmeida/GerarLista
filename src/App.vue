@@ -26,7 +26,8 @@
       </li>
       <li><label>🏟 Gym:</label> <input type="text" v-model="form.gym" /></li>
       <li>
-        <label>🏘️ Bairro: </label> <input type="text" v-model="form.location" />
+        <label>🏘️ Localização: </label>
+        <input type="text" v-model="form.location" />
         *opcional
       </li>
       <li>
@@ -59,10 +60,10 @@
 
     <pre ref="result">
       <div class="poke_raid">
-    🔰 *RAID LEVEL {{form.raid}}{{form.ex ? ' EX': ''}}{{form.color ? ' '+form.color: ''}}*{{form.location && `\n🏘️ *Bairro: ${form.location.trim()}*`}}
+    🔰 *RAID LEVEL {{form.raid}}{{form.ex ? ' EX': ''}}{{form.color ? ' '+form.color: ''}}*
     🐣 *Chefe: {{form.chefe.trim()}}*
     ⏳ *Hora: {{form.time}}*
-    🏟 *Gym: {{form.gym.trim()}}*
+    🏟 *Gym: {{form.gym.trim()}}*{{form.location && `\n🏘️ *Localização: ${form.location.trim()}*`}}
     {{form.coord && `📍 *Coordenadas*${'\n'+this.form.coord}`}}
 
       <span v-for="(u, k) in users" :key="k">{{k + 1}}. {{ u.nick }} {{ u.level ? ' - ' + u.level : '' }}</span>
@@ -123,11 +124,11 @@ export default {
         .join('\n')
       let codigo = `🔰 *RAID LEVEL ${this.form.raid}${
         this.form.ex ? ' EX' : ''
-      }${this.form.color ? ' ' + this.form.color : ''}*${this.form.location &&
-        `\n🏘️ *Bairro: ${this.form.location.trim()}*`}
+      }${this.form.color ? ' ' + this.form.color : ''}
 🐣 *Chefe: ${this.form.chefe.trim()}*
 ⏳ *Hora: ${this.form.time}*
-🏟 *Gym: ${this.form.gym.trim()}*
+🏟 *Gym: ${this.form.gym.trim()}*${this.form.location &&
+        `\n🏘️ *Localização: ${this.form.location.trim()}*`}
 ${this.form.coord && `📍 *Coordenadas*${'\n' + this.form.coord}`}
     
 ${users}
