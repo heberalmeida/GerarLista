@@ -31,7 +31,7 @@
               name="color"
               type="radio"
               v-model="form.color"
-              value="Valor-Vermelho"
+              value="Instinct-Amarelo"
             />
             <span></span>
           </label>
@@ -41,7 +41,7 @@
               name="color"
               type="radio"
               v-model="form.color"
-              value="Instinct-Amarelo"
+              value="Valor-Vermelho"
             />
             <span></span>
           </label>
