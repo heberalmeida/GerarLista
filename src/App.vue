@@ -200,6 +200,7 @@ ${users}
 body{
 	background-color: rgba(252, 252, 159, 0.705);
 }
+
 img{
 	margin: 15px;
 	width: 90%;
