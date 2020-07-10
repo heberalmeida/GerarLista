@@ -92,12 +92,7 @@
               />
             </div>
             <div class="level">
-              <the-mask
-                type="number"
-                class="nick-level imputs"
-                mask="##"
-                v-model="u.level"
-              />
+              <the-mask class="nick-level imputs" mask="##" v-model="u.level" />
             </div>
           </div>
         </li>
@@ -109,7 +104,7 @@
     🐣 *Chefe: {{form.chefe.trim()}}*
     ⏳ *Hora: {{form.time}}*
     🏟 *Gym: {{form.gym.trim()}}*{{form.location && `\n🏘️ *Localização: ${form.location.trim()}*`}}
-    {{form.coord && `📍 *Coordenadas*${'\n'+this.form.coord}`}}
+    {{form.coord && `📍 *Coordenadas*${'\n'+this.form.coord}`}}{{users}}
 
       <span v-for="(u, k) in users" :key="k">{{k + 1}}. {{ u.nick }} {{ u.level ? ' - ' + u.level : '' }}</span>
     </div>
@@ -144,7 +139,7 @@ export default {
     listas: [5, 10, 15, 20],
     user: {
       nick: '',
-      level: ''
+      level: 30
     },
     users: [],
     codigo: ''
