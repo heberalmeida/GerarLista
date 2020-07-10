@@ -104,7 +104,7 @@
     🐣 *Chefe: {{form.chefe.trim()}}*
     ⏳ *Hora: {{form.time}}*
     🏟 *Gym: {{form.gym.trim()}}*{{form.location && `\n🏘️ *Localização: ${form.location.trim()}*`}}
-    {{form.coord && `📍 *Coordenadas*${'\n'+this.form.coord}`}}{{users}}
+    {{form.coord && `📍 *Coordenadas*${'\n'+this.form.coord}`}}
 
       <span v-for="(u, k) in users" :key="k">{{k + 1}}. {{ u.nick }} {{ u.level ? ' - ' + u.level : '' }}</span>
     </div>
@@ -139,7 +139,7 @@ export default {
     listas: [5, 10, 15, 20],
     user: {
       nick: '',
-      level: 30
+      level: ''
     },
     users: [],
     codigo: ''
