@@ -92,7 +92,12 @@
               />
             </div>
             <div class="level">
-              <the-mask class="nick-level imputs" mask="##" v-model="u.level" />
+              <the-mask
+                class="nick-level imputs"
+                mask="##"
+                v-model="u.level"
+                placeholder="Level"
+              />
             </div>
           </div>
         </li>
@@ -248,7 +253,7 @@ label {
     justify-content flex-start
     display: flex;
     .nick-level {
-      width 30px
+      width 40px
       border-radius 5px
     }
   }
