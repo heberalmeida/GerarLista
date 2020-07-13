@@ -114,9 +114,12 @@
       <span v-for="(u, k) in users" :key="k">{{k + 1}}. {{ u.nick }} {{ u.level ? ' - ' + u.level : '' }}</span>
     </div>
     </pre>
-      <div class="text-center">
+      <div class="text-center separate">
         <button class="btn" type="submit">
           Copiar
+        </button>
+        <button class="btn" @click.prevent="sendWaths">
+          Enviar WhatsApp
         </button>
       </div>
     </form>
@@ -165,13 +168,13 @@ export default {
       this.user.nick = ''
       this.user.level = ''
     },
-    async getGerar() {
+    async generateList() {
       let users = await this.users
         .map((i, k) => {
           return `${k + 1}. ${i.nick} ${i.level ? ` - ${i.level}` : ''}`
         })
         .join('\n')
-      let codigo = `🔰 *RAID LEVEL ${this.form.raid}${
+      this.codigo = `🔰 *RAID LEVEL ${this.form.raid}${
         this.form.ex ? ' EX' : ''
       }${this.form.color ? ' ' + this.form.color : ''}*
 🐣 *Chefe: ${this.form.chefe.trim()}*
@@ -182,11 +185,29 @@ ${this.form.coord && `📍 *Coordenadas*${'\n' + this.form.coord}`}
     
 ${users}
       `
-      this.$copyText(codigo).then(
+    },
+    async getGerar() {
+      await this.generateList()
+      this.$copyText(this.codigo).then(
         () => alert('Copiado'),
         () => alert('Erro')
       )
+    },
+    async sendWaths() {
+      await this.generateList()
+      window.open(
+        `https://api.whatsapp.com/send?text=${window.encodeURIComponent(
+          this.codigo
+        )}`,
+        '_blank'
+      )
     }
+    /* _isMobile() {
+      var isMobile = /iphone|ipod|android|ie|blackberry|fennec/.test(
+        navigator.userAgent.toLowerCase()
+      )
+      return isMobile
+    } */
   },
   mounted() {
     this.users = Array(this.form.qtdLista)
@@ -379,6 +400,11 @@ input[type="radio"]{
 .text-center {
   text-align center
   margin 20px
+}
+
+.separate {
+  display: flex;
+  justify-content space-between
 }
 
 @media only screen and (min-width: 600px) {
