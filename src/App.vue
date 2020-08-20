@@ -2,7 +2,7 @@
   <div id="app">
     <Adsense
       data-ad-client="ca-pub-9214659967456120"
-      data-ad-slot="1234567890"
+      data-ad-slot="2816095449"
     />
     <img src="./assets/lista.png" border="0" />
     <form @submit.prevent="getGerar">
@@ -129,7 +129,7 @@
     </form>
     <Adsense
       data-ad-client="ca-pub-9214659967456120"
-      data-ad-slot="1234567890"
+      data-ad-slot="7988531078"
     />
   </div>
 </template>
