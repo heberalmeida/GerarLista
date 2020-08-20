@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <Adsense data-ad-client="ca-pub-9214659967456120" data-ad-slot="1234567890">
+    </Adsense>
     <img src="./assets/lista.png" border="0" />
     <form @submit.prevent="getGerar">
       <ul>
@@ -123,6 +125,7 @@
         </button>
       </div>
     </form>
+    <Adsense data-ad-client="ca-pub-9214659967456120" data-ad-slot="1234567890">
   </div>
 </template>
 
